@@ -1,0 +1,9 @@
+Django==2.1.7
+django-test-pep8==0.1
+djangorestframework==3.9.2
+djangorestframework-camel-case==1.0.3
+djangorestframework-gis==0.14
+pep8==1.7.1
+psycopg2-binary==2.7.7
+pytz==2018.9
+six==1.12.0
