@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  # Postgres
+  db:
+    image: mdillon/postgis
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+  # Django App
+  app:
+    build:
+      context: .
+      args:
+        requirements: requirements/development.txt
+    environment:
+      - DJANGO_SETTINGS_MODULE=code_challenge_backend.settings.development
+    command: ["./run_app.sh"]
+    volumes:
+      - ./:/project
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db

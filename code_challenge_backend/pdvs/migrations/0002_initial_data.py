@@ -2,8 +2,9 @@
 import os
 import json
 import re
-from django.db import migrations
+import pdvs
 from pdvs.serializers import PdvSerializer
+from django.db import migrations
 from django.conf import settings
 
 
@@ -14,7 +15,7 @@ def camel2snake(name):
 
 def import_pdvs_from_json(apps, schema_editor):
 
-    with open(os.path.join(settings.BASE_DIR, 'pdvs', 'files', 'pdvs.json')) as pdvs_file:
+    with open(os.path.join(os.path.dirname(pdvs.__file__), 'files', 'pdvs.json')) as pdvs_file:
         pdvs_json = json.load(pdvs_file)
         
         for pdv_json in pdvs_json['pdvs']:
